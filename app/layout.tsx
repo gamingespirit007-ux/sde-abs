@@ -8,9 +8,9 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Draftr - AI-Powered Content Writing Platform',
-  description: 'Transform your writing workflow with Draftr. Create compelling content faster using advanced AI assistance.',
-  keywords: ['AI writing', 'content creation', 'writing assistant', 'AI copywriting'],
+  title: 'SDE Labs - Design & Development Agency',
+  description: 'Empowering businesses with innovative design and development solutions. We build bold brands with thoughtful design, strategy, and technology.',
+  keywords: ['design agency', 'web design', 'UX design', 'branding', 'digital design', 'development'],
   generator: 'v0.app',
   viewport: {
     width: 'device-width',

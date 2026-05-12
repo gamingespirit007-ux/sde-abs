@@ -3,97 +3,91 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Star } from 'lucide-react'
 
 export default function Hero() {
   return (
-    <section className="w-full pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-[#f3e8ff] dark:bg-slate-900/50">
+    <section className="w-full pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-50 via-white to-orange-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Left Content */}
+        <div className="flex flex-col items-center justify-center text-center gap-8">
+          {/* Heading */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col gap-6"
+            className="flex flex-col gap-4 max-w-3xl"
           >
-            {/* Heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-foreground text-balance"
-            >
-              Bring ideas to life in just a few clicks.
-            </motion.h1>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-black dark:text-white text-balance">
+              Building bold brands with{' '}
+              <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-500">
+                thoughtful design
+              </span>
+            </h1>
 
             {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-base sm:text-lg text-foreground/70 max-w-xl leading-relaxed"
-            >
-              Create stunning designs and interactive prototypes with our intuitive drag-and-drop editor. No design experience needed.
-            </motion.p>
-
-            {/* CTA Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <Button
-                size="lg"
-                className="bg-accent text-white hover:bg-accent/90 group font-medium"
-                asChild
-              >
-                <Link href="/auth/signup" className="flex items-center gap-2">
-                  Get Started • it&apos;s free
-                  <motion.div
-                    className="flex gap-1"
-                    animate={{ x: [0, 4, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    <ArrowRight className="w-4 h-4" />
-                    <ArrowRight className="w-4 h-4" />
-                  </motion.div>
-                </Link>
-              </Button>
-            </motion.div>
+            <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              At SDE Labs, we help startups tackle the world&apos;s toughest challenges with tailored solutions, guiding you from strategy to success in a competitive market.
+            </p>
           </motion.div>
 
-          {/* Right Visual - Product Mockups */}
+          {/* CTA and Social Proof */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="hidden lg:flex items-center justify-center relative h-96"
+            className="flex flex-col sm:flex-row items-center gap-6 justify-center"
           >
-            <div className="relative w-full h-full">
-              {/* Decorative background elements */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/50 to-transparent" />
-              
-              {/* Product mockup cards */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="absolute left-0 top-8 w-48 h-32 bg-white rounded-lg shadow-lg p-4 border border-border"
-              >
-                <div className="h-full bg-gradient-to-br from-slate-100 to-slate-50 rounded flex items-center justify-center text-xs font-medium text-foreground/50">
-                  Design Preview
-                </div>
-              </motion.div>
+            <Button
+              size="lg"
+              className="bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold px-8 group"
+              asChild
+            >
+              <Link href="/auth/signup" className="flex items-center gap-2">
+                Get Started
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </Button>
 
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: 0.3 }}
-                className="absolute right-0 bottom-4 w-48 h-40 bg-gradient-to-br from-orange-400 to-orange-500 rounded-lg shadow-lg p-4"
-              >
-                <div className="h-full rounded flex items-center justify-center text-sm font-semibold text-white">
-                  Prototype
+            {/* Social Proof */}
+            <div className="flex items-center gap-3">
+              <div className="flex -space-x-2">
+                {[1, 2, 3, 4].map((i) => (
+                  <div
+                    key={i}
+                    className="w-8 h-8 rounded-full bg-gradient-to-br from-slate-300 to-slate-400 dark:from-slate-600 dark:to-slate-700 border-2 border-white dark:border-slate-950"
+                  />
+                ))}
+              </div>
+              <div className="flex items-center gap-1">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <Star key={i} className="w-4 h-4 fill-orange-400 text-orange-400" />
+                ))}
+                <span className="text-sm text-slate-600 dark:text-slate-400 ml-1">
+                  Trusted by 300+ clients
+                </span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Client Logos */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="w-full pt-8 mt-8 border-t border-slate-200 dark:border-slate-800"
+          >
+            <p className="text-sm text-slate-600 dark:text-slate-400 mb-6">
+              Loved by 300+ big and small brands around the worlds
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12">
+              {['Logoipsum', 'Logoipsum', 'Logoipsum', 'Logoipsum', 'Logoipsum'].map((brand, i) => (
+                <div
+                  key={i}
+                  className="text-sm font-medium text-slate-600 dark:text-slate-400 opacity-60 hover:opacity-100 transition-opacity"
+                >
+                  {brand}
                 </div>
-              </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>

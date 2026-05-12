@@ -7,6 +7,8 @@ import Workflow from '@/components/landing/workflow'
 import Integrations from '@/components/landing/integrations'
 import Testimonials from '@/components/landing/testimonials'
 import Pricing from '@/components/landing/pricing'
+import FAQ from '@/components/landing/faq'
+import Awards from '@/components/landing/awards'
 import CTA from '@/components/landing/cta'
 import Footer from '@/components/landing/footer'
 
@@ -20,6 +22,8 @@ export default function Home() {
       <Integrations />
       <Testimonials />
       <Pricing />
+      <FAQ />
+      <Awards />
       <CTA />
       <Footer />
     </main>

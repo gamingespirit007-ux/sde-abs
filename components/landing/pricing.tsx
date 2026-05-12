@@ -1,60 +1,48 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Check } from 'lucide-react'
 import Link from 'next/link'
 
 const plans = [
   {
-    name: 'Starter plan',
-    price: 19,
-    description: 'For individuals',
+    name: 'Starter',
+    price: 2500,
+    bgColor: 'bg-yellow-300 dark:bg-yellow-400',
+    textColor: 'text-black',
     features: [
-      'Up to 5 projects',
-      '1 GB storage',
-      'Basic support',
-      'Export as image',
+      'Design Updates Every 2 Days',
+      'Mid-level Designer',
+      'SEO optimization',
+      'Monthly analytics',
+      '2+ Calls Per Month',
+      'License free assets',
     ],
-    cta: 'Get Started',
+    cta: 'Let\'s Collaborate',
     highlighted: false,
   },
   {
-    name: 'Pro plan',
-    price: 49,
-    description: 'For small teams',
+    name: 'Pro',
+    price: 3800,
+    bgColor: 'bg-blue-600 dark:bg-blue-700',
+    textColor: 'text-white',
     features: [
-      'Unlimited projects',
-      '100 GB storage',
-      'Priority support',
-      'Export as video',
-      'Team collaboration',
-      'Custom branding',
+      'Design Updates Daily',
+      'Senior-level Designer',
+      'AI Advisory Framework',
+      'Weekly dedicated Team',
+      'AI Calls Per Month',
+      'License free assets',
     ],
-    cta: 'Get Started',
+    cta: 'Let\'s Collaborate',
     highlighted: true,
-  },
-  {
-    name: 'Business plan',
-    price: 79,
-    description: 'For enterprises',
-    features: [
-      'Everything in Pro',
-      'Unlimited storage',
-      'Dedicated support',
-      'Advanced analytics',
-      'Custom integrations',
-      'SSO & security',
-    ],
-    cta: 'Get Started',
-    highlighted: false,
   },
 ]
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
+    <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-950">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -64,13 +52,13 @@ export default function Pricing() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 text-balance">
-            Flexible pricing plans
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black dark:text-white mb-4 text-balance">
+            Pick the plan that fits your <span className="italic">start-up</span>
           </h2>
         </motion.div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
           {plans.map((plan, index) => (
             <motion.div
               key={index}
@@ -78,45 +66,34 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={plan.highlighted ? 'md:scale-105' : ''}
             >
-              <Card
-                className={`p-8 h-full flex flex-col border-2 ${
-                  plan.highlighted
-                    ? 'border-accent bg-accent/5'
-                    : 'border-border'
-                }`}
+              <div
+                className={`${plan.bgColor} ${plan.textColor} rounded-2xl p-8 h-full flex flex-col`}
               >
                 {/* Badge */}
                 {plan.highlighted && (
-                  <div className="mb-4">
-                    <span className="inline-block px-3 py-1 rounded-full bg-accent text-primary-foreground text-xs font-semibold">
-                      MOST POPULAR
+                  <div className="mb-6">
+                    <span className={`inline-block px-3 py-1 rounded-full ${plan.textColor === 'text-white' ? 'bg-white/20 text-white' : 'bg-black/10 text-black'} text-xs font-semibold`}>
+                      Pro
                     </span>
                   </div>
                 )}
 
                 {/* Plan Info */}
-                <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-foreground mb-2">{plan.name}</h3>
-                  <p className="text-sm text-foreground/60 mb-4">{plan.description}</p>
-
-                  {plan.price ? (
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-bold text-foreground">${plan.price}</span>
-                      <span className="text-foreground/60">/month</span>
-                    </div>
-                  ) : (
-                    <div className="text-4xl font-bold text-foreground">Custom</div>
-                  )}
+                <div className="mb-8">
+                  <h3 className="text-3xl font-bold mb-2">{plan.name}</h3>
+                  <div className="flex items-baseline gap-1 mb-2">
+                    <span className="text-5xl font-bold">${plan.price}</span>
+                    <span className="text-sm opacity-75">/month</span>
+                  </div>
                 </div>
 
                 {/* CTA Button */}
                 <Button
-                  className={`w-full mb-6 ${
+                  className={`w-full mb-8 rounded-full font-semibold ${
                     plan.highlighted
-                      ? 'bg-primary text-primary-foreground hover:bg-primary/90'
-                      : 'border border-border bg-transparent hover:bg-muted'
+                      ? 'bg-white text-blue-600 hover:bg-slate-100'
+                      : 'bg-black/20 text-black hover:bg-black/30'
                   }`}
                   asChild
                 >
@@ -127,26 +104,15 @@ export default function Pricing() {
                 <div className="space-y-4 flex-1">
                   {plan.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                      <span className="text-foreground/80">{feature}</span>
+                      <Check className={`w-5 h-5 flex-shrink-0 mt-0.5 ${plan.textColor}`} />
+                      <span className={plan.textColor}>{feature}</span>
                     </div>
                   ))}
                 </div>
-              </Card>
+              </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Footer Note */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center text-foreground/60 mt-12"
-        >
-          All plans include a 14-day free trial. Cancel anytime.
-        </motion.p>
       </div>
     </section>
   )
