@@ -6,6 +6,8 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "motion/react";
+import { useTheme } from "next-themes";
+import { Sun, Moon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const FloatingNav = ({
@@ -21,6 +23,7 @@ export const FloatingNav = ({
 }) => {
   const { scrollYProgress } = useScroll();
   const [visible, setVisible] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (typeof current === "number") {
@@ -76,6 +79,19 @@ export const FloatingNav = ({
 
           {/* Divider */}
           <div className="h-5 w-px bg-neutral-200 dark:bg-white/10" />
+
+          {/* Theme Toggle Button */}
+          <button
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="relative rounded-full p-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-white/10 dark:hover:text-white"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? (
+              <Sun className="h-4 w-4" />
+            ) : (
+              <Moon className="h-4 w-4" />
+            )}
+          </button>
 
           {/* CTA Button */}
           <button className="relative rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-neutral-800 hover:shadow-lg hover:shadow-neutral-900/20 dark:bg-white dark:text-black dark:hover:bg-neutral-100 dark:hover:shadow-white/20">
