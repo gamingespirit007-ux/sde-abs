@@ -1,6 +1,6 @@
 'use client'
 
-import FloatingNavbar from '@/components/landing/floating-navbar'
+import FloatingNavbar from '@/components/landing/floating-nav'
 import Hero from '@/components/landing/hero'
 import Features from '@/components/landing/features'
 import Workflow from '@/components/landing/workflow'
