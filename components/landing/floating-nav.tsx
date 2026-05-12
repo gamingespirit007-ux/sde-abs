@@ -6,7 +6,7 @@ import {
   IconInfoCircle,
   IconBriefcase,
   IconUsers,
-  IconPricetag,
+  IconTag,
   IconAward,
 } from "@tabler/icons-react";
 
@@ -44,7 +44,7 @@ export default function FloatingNavbar() {
       name: "Pricing",
       link: "#pricing",
       icon: (
-        <IconPricetag className="h-4 w-4 text-neutral-600 dark:text-white" />
+        <IconTag className="h-4 w-4 text-neutral-600 dark:text-white" />
       ),
     },
     {
